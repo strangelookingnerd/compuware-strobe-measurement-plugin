@@ -18,11 +18,11 @@ The following are required to use this plugin:
 
 ### Installing in a Jenkins Instance
 
-    Install the Compuware Strobe Measurement plugin according to the
-    Jenkins instructions for installing plugins. Dependent plugins will
-    automatically be installed. (You will still need to separately install 
-    Compuware Enterprise Services)
-
+Install the Compuware Strobe Measurement plugin according to the
+Jenkins instructions for installing plugins. Dependent plugins will
+automatically be installed. (You will still need to separately install 
+Compuware Enterprise Services)
+    
 ### Configuration
 
 1.  In Compuware Enterprise Services, do the following:
@@ -46,7 +46,7 @@ The following are required to use this plugin:
     		
     		-	Make sure the description field matches the description in CES.
     		
-    		-	Add the CES URL in the form scheme://host:port e.g. https://myHost:48226
+    		-	Add the CES URL in the form scheme://host:port    e.g. https://myHost:48226
 
 3.  In the Jenkins system, you should define the personal access token from step 1 as secret text in Credentials. 
 	Refer to the Jenkins documentation for the Credentials Plugin.
@@ -61,7 +61,7 @@ The following are required to use this plugin:
 
 4.  Click **Save**.
 
-	Your project is now configured to start a measurement on the configured job.
+Your project is now configured to start a measurement on the configured job.
 	
 	**Note**: We also support pipeline syntax, and Jenkins will help you generate it.
 			  You will fill out the form the same way, but then click **Generate Pipeline Script**
