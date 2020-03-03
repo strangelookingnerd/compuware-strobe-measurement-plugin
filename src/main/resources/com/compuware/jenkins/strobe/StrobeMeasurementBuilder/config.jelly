@@ -1,0 +1,90 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form" xmlns:c="/lib/credentials" xmlns:cc="/lib/compuware">
+	
+	<f:entry title="${%hostConnection}" field="connectionId">
+       <cc:hostSelect default=""/>
+    </f:entry>
+    
+	<f:entry title="CES secret token" field="credentialsId">
+		<c:select/>
+	</f:entry>
+
+	<f:entry title="${%requestType}" field="requestType">
+		<select name="requestType">
+	        <option selected="${instance.requestType.equals('addActive')? 'true':null}" value="addActive">${%requestActive}</option>
+	        <option selected="${instance.requestType.equals('addQueue')? 'true':null}" value="addQueue">${%requestQueue}</option>
+    	</select>			
+	</f:entry>
+	
+	<f:entry title="${%jobName}" field="jobName">
+		<f:textbox/>
+	</f:entry>
+	
+	<f:entry title="${%tags}" field="tags">
+		<f:textbox/>
+	</f:entry>
+	
+	<f:entry title="${%profileName}" field="profileName">
+		<f:textbox/>
+	</f:entry>
+	
+	<f:entry title="${%emailTo}" field="emailto" help="/descriptor/com.compuware.jenkins.strobe.StrobeMeasurementBuilder/help/emailTo">
+		<f:textbox/>
+	</f:entry>
+	
+	<f:entry title="${%duration}" field="duration">
+		<f:textbox/>
+	</f:entry>
+	
+	<f:entry title="${%samples}" field="samples">
+		<f:textbox/>
+	</f:entry>
+	
+	<f:entry title="${%limit}" field="limit">
+		<f:textbox/>
+	</f:entry>
+
+	<f:entry title="${%finalAction}" field="finalAction">
+		<select name="finalAction">
+	        <option selected="${instance.finalAction.equals('quit')? 'true':null}" value="quit">${%finalActionQuit}</option>
+	        <option selected="${instance.finalAction.equals('stop')? 'true':null}" value="stop">${%finalActionStop}</option>
+	        <option selected="${instance.finalAction.equals('nolimit')? 'true':null}" value="nolimit">${%finalActionContinue}</option>
+    	</select>			
+	</f:entry>
+	
+	<f:entry title="${%hlq}" field="hlq">
+		<f:textbox/>
+	</f:entry>
+	
+	<f:entry title="${%transactionId}" field="transactionId">
+		<f:textbox/>
+	</f:entry>
+	
+	<f:entry>
+		<f:advanced title="${%callbackConfig}" field="callbackConfig">
+		
+			<f:entry title="${%method}" field="method">
+				<select name="method">
+			        <option selected="${instance.method.equals('POST')? 'true':null}" value="POST">${%post}</option>
+			        <option selected="${instance.method.equals('GET')? 'true':null}" value="GET">${%get}</option>
+			        <option selected="${instance.method.equals('PUT')? 'true':null}" value="PUT">${%put}</option>
+			        <option selected="${instance.method.equals('DELETE')? 'true':null}" value="DELETE">${%delete}</option>
+		    	</select>			
+			</f:entry>
+		
+			<f:entry title="${%url}" field="url">
+				<f:textbox/>
+			</f:entry>
+			
+		    <f:entry title="${%headers}" field="headers">
+			    <f:textarea/>
+			</f:entry>
+			
+		    <f:entry title="${%body}" field="body">
+			    <f:textarea/>
+			</f:entry>
+		
+		</f:advanced>
+	</f:entry>	
+      
+ </j:jelly>

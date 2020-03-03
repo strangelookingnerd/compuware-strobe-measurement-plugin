@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.jenkins-ci.plugins</groupId>
+    <artifactId>plugin</artifactId>
+    <!-- Baseline Jenkins version you use to build and test the plugin. Users must have this version or newer to run. -->
+    <version>2.21</version>
+    <relativePath />
+  </parent>
+  
+  <groupId>com.compuware.jenkins</groupId>
+  <version>1.0.0</version>
+  <artifactId>compuware-strobe-measurement</artifactId>
+  <packaging>hpi</packaging>
+
+  <properties>
+    <!-- Baseline Jenkins version you use to build the plugin. Users must have this version or newer to run. -->
+    <jenkins.version>2.21</jenkins.version>
+    <!-- Java Level to use. Java 7 required when using core >= 1.612 -->
+    <java.level>7</java.level>
+  </properties>
+  
+  <name>Compuware Strobe Measurement</name>
+  <description>Submits a Compuware Strobe Measurement</description>
+  <url>https://github.com/jenkinsci/compuware-topaz-for-total-test-plugin</url>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://opensource.org/licenses/MIT</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>cpwr_jenkins</id>
+      <name>Vince Capodanno</name>
+      <email>vince.capodanno@compuware.com</email>
+    </developer>
+    <developer>
+      <id>cpwr_jenkins</id>
+      <name>Nila Datta</name>
+      <email>Nilanjana.Datta@compuware.com</email>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
+    <url>http://github.com/jenkinsci/${project.artifactId}-plugin</url>
+    <tag>compuware-strobe-measurement-1.0.0</tag>
+  </scm>
+
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+  <dependencies>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>credentials</artifactId>
+      <version>2.0.4</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>cloudbees-folder</artifactId>
+      <version>5.12</version>
+    </dependency>
+    <dependency>
+      <groupId>com.compuware.jenkins</groupId>
+      <artifactId>compuware-common-configuration</artifactId>
+      <version>1.0.7</version>
+    </dependency>
+    <dependency>
+	    <groupId>org.jenkins-ci.plugins</groupId>
+	    <artifactId>plain-credentials</artifactId>
+	    <version>1.2</version>
+	</dependency>
+  	<dependency>
+	  <groupId>org.apache.httpcomponents</groupId>
+	  <artifactId>httpclient</artifactId>
+	  <version>4.5.8</version>
+	</dependency>
+  </dependencies>
+
+</project>
