@@ -140,7 +140,13 @@ public class StrobeMeasurementRunner
 		String sessionRequestNumberString = "@number\":";
 		int sessionRequestNumberIndex = results.indexOf(sessionRequestNumberString);
 		int commaIndex = results.indexOf(",", sessionRequestNumberIndex);
-		String sessionRequestNumber = results.substring(sessionRequestNumberIndex + sessionRequestNumberString.length(), commaIndex);        
+		String sessionRequestNumber = results.substring(sessionRequestNumberIndex + sessionRequestNumberString.length(), commaIndex);    
+		
+		// sometimes theres quotes around the number and sometimes not
+		if (sessionRequestNumber.length() == 6) {
+			sessionRequestNumber = sessionRequestNumber.substring(1, sessionRequestNumber.length() - 1);
+		}
+		
 		return Integer.parseInt(sessionRequestNumber);
 	}
 
