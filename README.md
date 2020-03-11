@@ -13,13 +13,14 @@ The following are required to use this plugin:
 -   Jenkins
 -   Jenkins Credentials Plugin
 -   Strobe license
--   Host Communications Interface
+-   Compuware Common Configuration plugin
 -   An installation of Compuware Enterprise Services with Strobe installed.
 
 	**Note**: CES must be version 20.02.x or greater to use the notification callback.
 			  This version will also utilize the INITBY of CI (Continuous Integration) identifier,
 			  which will allow zAdviser to track this activity.
 			  This plugin can still submit measurements using previous CES versions. 
+			  Strobe 18.02 ptf SBG422A is required for the INITBY of CI.
 
 ### Installing in a Jenkins Instance
 
