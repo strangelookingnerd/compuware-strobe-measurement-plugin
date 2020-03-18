@@ -23,7 +23,7 @@
   </properties>
   
   <name>Compuware Strobe Measurement Plugin</name>
-  <description>This plugin adds support for Compuware's Strobe Measurement Request API</description>
+  <description>Adds support for Compuware's Strobe Measurement Request API</description>
   <url>https://github.com/Compuware-Corp/compuware-strobe-measurement-plugin</url>
   <licenses>
     <license>
