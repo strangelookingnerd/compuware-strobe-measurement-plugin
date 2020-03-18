@@ -24,7 +24,7 @@
   
   <name>Compuware Strobe Measurement Plugin</name>
   <description>This plugin adds support for Compuware's Strobe Measurement Request API</description>
-  <url>https://github.com/jenkinsci/compuware-strobe-measurement-plugin</url>
+  <url>https://github.com/Compuware-Corp/compuware-strobe-measurement-plugin</url>
   <licenses>
     <license>
       <name>MIT License</name>
@@ -34,23 +34,11 @@
 
   <developers>
     <developer>
-      <id>cpwr_jenkins</id>
+      <id>VinceCapodanno</id>
       <name>Vince Capodanno</name>
       <email>vince.capodanno@compuware.com</email>
     </developer>
-    <developer>
-      <id>cpwr_jenkins</id>
-      <name>Nila Datta</name>
-      <email>Nilanjana.Datta@compuware.com</email>
-    </developer>
   </developers>
-
-  <scm>
-    <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
-    <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
-    <url>http://github.com/jenkinsci/${project.artifactId}-plugin</url>
-    <tag>compuware-strobe-measurement-1.0.0</tag>
-  </scm>
 
   <repositories>
     <repository>
