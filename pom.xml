@@ -22,8 +22,8 @@
     <java.level>7</java.level>
   </properties>
   
-  <name>Compuware Strobe Measurement</name>
-  <description>Submits a Compuware Strobe Measurement</description>
+  <name>Compuware Strobe Measurement Plugin</name>
+  <description>This plugin adds support for Compuware's Strobe Measurement Request API</description>
   <url>https://github.com/jenkinsci/compuware-strobe-measurement-plugin</url>
   <licenses>
     <license>
