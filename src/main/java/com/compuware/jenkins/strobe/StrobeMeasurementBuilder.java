@@ -32,6 +32,8 @@ import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
+import org.kohsuke.stapler.verb.GET;
+import org.kohsuke.stapler.verb.POST;
 
 import com.cloudbees.plugins.credentials.CredentialsProvider;
 import com.cloudbees.plugins.credentials.common.StandardListBoxModel;
@@ -43,6 +45,7 @@ import hudson.AbortException;
 import hudson.Extension;
 import hudson.FilePath;
 import hudson.Launcher;
+import hudson.Util;
 import hudson.model.AbstractProject;
 import hudson.model.Item;
 import hudson.model.Run;
@@ -52,6 +55,7 @@ import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.Builder;
 import hudson.util.FormValidation;
 import hudson.util.ListBoxModel;
+import hudson.util.Secret;
 import hudson.util.ListBoxModel.Option;
 import jenkins.model.Jenkins;
 import jenkins.tasks.SimpleBuildStep;
@@ -60,14 +64,12 @@ import net.sf.json.JSONObject;
 public class StrobeMeasurementBuilder extends Builder implements SimpleBuildStep
 {
 	private static final String EQUAL = "=";
-	private static final String EMPTY_STRING = "";
 
 	private String connectionId;
 	private String credentialsId;
 	private String requestType;
 	private String jobName;
 	private String cesUrl;
-	private String personalAccessToken;
 	private String system;
 	private String tags;
 	private String profileName;
@@ -126,15 +128,6 @@ public class StrobeMeasurementBuilder extends Builder implements SimpleBuildStep
 
 	public String getSystem() {
 		return system;
-	}
-
-	public String getPersonalAccessToken() {
-		return personalAccessToken;
-	}
-	
-	@DataBoundSetter
-	public void setPersonalAccessToken(String personalAccessToken) {
-		this.personalAccessToken = personalAccessToken;
 	}
 	
 	public String getTags() {
@@ -261,17 +254,16 @@ public class StrobeMeasurementBuilder extends Builder implements SimpleBuildStep
 		{
 			// get the token from the selected credential
 			List<StringCredentials> credentials = filter(lookupCredentials(StringCredentials.class, build.getParent(), ACL.SYSTEM, Collections.<DomainRequirement> emptyList()), withId(StringUtils.trimToEmpty(credentialsId)));
-			String token = StringUtils.EMPTY;
+			Secret token = null;
 			if (credentials != null && credentials.size() > 0) {
 				StringCredentials credential = credentials.get(0);
-				token = credential.getSecret().getPlainText();
+				token = credential.getSecret();
 			}
-			setPersonalAccessToken(token);
 
 			validateParameters(launcher, listener, build.getParent());
 			
 			StrobeMeasurementRunner runner = new StrobeMeasurementRunner(this);
-			boolean success = runner.run(build, launcher, workspaceFilePath, listener);
+			boolean success = runner.run(build, launcher, workspaceFilePath, listener, token);
 			if (success == false)
 			{
 				throw new AbortException(Messages.strobeMeasurementFailure());
@@ -447,7 +439,8 @@ public class StrobeMeasurementBuilder extends Builder implements SimpleBuildStep
             save();
             return super.configure(req,formData);
         }
-		
+
+		@POST
 		public ListBoxModel doFillConnectionIdItems(@AncestorInPath Jenkins context, @QueryParameter String connectionId,
 				@AncestorInPath Item project)
 		{
@@ -471,7 +464,8 @@ public class StrobeMeasurementBuilder extends Builder implements SimpleBuildStep
 
 			return model;
 		}
-		
+
+		@POST
 		public static ListBoxModel doFillCredentialsIdItems(@AncestorInPath Jenkins context, @QueryParameter String credentialsId,
 				@AncestorInPath Item project)
 		{
@@ -496,20 +490,22 @@ public class StrobeMeasurementBuilder extends Builder implements SimpleBuildStep
 
 			return model;
 		}
-		
+
+		@GET
 		public FormValidation doCheckConnectionId(@QueryParameter final String value)
 		{
-			if (value.equalsIgnoreCase(EMPTY_STRING))
+			if (Util.fixEmptyAndTrim(value) == null)
 			{
 				return FormValidation.error(Messages.checkConnectionIdError());
 			}
 
 			return FormValidation.ok();
 		}
-		
+
+		@POST
 		public FormValidation doCheckCredentialsId(@QueryParameter final String value)
 		{
-			if (value.equalsIgnoreCase(EMPTY_STRING))
+			if (Util.fixEmptyAndTrim(value) == null)
 			{
 				return FormValidation.error(Messages.checkLoginCredentialError());
 			}
@@ -517,9 +513,10 @@ public class StrobeMeasurementBuilder extends Builder implements SimpleBuildStep
 			return FormValidation.ok();
 		}
 		
+		@POST
 		public FormValidation doCheckJobName(@QueryParameter final String value)
 		{
-			if (value.equalsIgnoreCase(EMPTY_STRING))
+			if (Util.fixEmptyAndTrim(value) == null)
 			{
 				return FormValidation.error(Messages.checkJobNameError());
 			}

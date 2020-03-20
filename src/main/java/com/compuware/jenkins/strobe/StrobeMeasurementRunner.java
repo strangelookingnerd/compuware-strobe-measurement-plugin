@@ -31,6 +31,7 @@ import hudson.FilePath;
 import hudson.Launcher;
 import hudson.model.Run;
 import hudson.model.TaskListener;
+import hudson.util.Secret;
 
 public class StrobeMeasurementRunner
 {	
@@ -64,7 +65,7 @@ public class StrobeMeasurementRunner
 	 * @throws IOException
 	 * 			If an error occurred during the Strobe measurement submit
 	 */
-	public boolean run(final Run<?,?> build, final Launcher launcher, final FilePath workspaceFilePath, final TaskListener listener) throws IOException
+	public boolean run(final Run<?,?> build, final Launcher launcher, final FilePath workspaceFilePath, final TaskListener listener, Secret token) throws IOException
 	{
 		String url = smBuilder.getCesUrl() + "/strobe/measurement";
         listener.getLogger().println("Posting to URL " + url);
@@ -112,7 +113,7 @@ public class StrobeMeasurementRunner
         
         post.setEntity(new StringEntity(json.toString()));
         post.addHeader("Content-Type", "application/json");
-        post.addHeader("Authorization", smBuilder.getPersonalAccessToken());
+        post.addHeader("Authorization", token.getPlainText());
         
         int returnCode = 99999;
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
