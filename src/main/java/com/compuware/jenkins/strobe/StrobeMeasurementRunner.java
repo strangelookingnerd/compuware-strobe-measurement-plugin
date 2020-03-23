@@ -113,7 +113,10 @@ public class StrobeMeasurementRunner
         
         post.setEntity(new StringEntity(json.toString()));
         post.addHeader("Content-Type", "application/json");
-        post.addHeader("Authorization", token.getPlainText());
+        
+        if (token != null) {
+            post.addHeader("Authorization", token.getPlainText());
+        }
         
         int returnCode = 99999;
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
