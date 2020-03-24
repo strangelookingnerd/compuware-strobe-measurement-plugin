@@ -39,6 +39,12 @@
       <email>vince.capodanno@compuware.com</email>
     </developer>
   </developers>
+  
+  <scm>
+    <connection>scm:git:ssh://github.com/jenkinsci/compuware-strobe-measurement-plugin.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/jenkinsci/compuware-strobe-measurement-plugin.git</developerConnection>
+    <url>https://github.com/jenkinsci/compuware-strobe-measurement-plugin</url>
+  </scm>
 
   <repositories>
     <repository>
@@ -64,11 +70,11 @@
       <version>5.12</version>
     </dependency>
     <dependency>
+    <dependency>
       <groupId>com.compuware.jenkins</groupId>
       <artifactId>compuware-common-configuration</artifactId>
-      <version>1.0.7</version>
+      <version>1.0.9</version>
     </dependency>
-    <dependency>
 	    <groupId>org.jenkins-ci.plugins</groupId>
 	    <artifactId>plain-credentials</artifactId>
 	    <version>1.2</version>
