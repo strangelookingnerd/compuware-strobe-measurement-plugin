@@ -11,7 +11,7 @@
   </parent>
   
   <groupId>com.compuware.jenkins</groupId>
-  <version>1.0.0</version>
+  <version>1.0.0-SNAPSHOT</version>
   <artifactId>compuware-strobe-measurement</artifactId>
   <packaging>hpi</packaging>
 
