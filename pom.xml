@@ -70,14 +70,14 @@
       <version>5.12</version>
     </dependency>
     <dependency>
-    <dependency>
       <groupId>com.compuware.jenkins</groupId>
       <artifactId>compuware-common-configuration</artifactId>
       <version>1.0.9</version>
     </dependency>
-	    <groupId>org.jenkins-ci.plugins</groupId>
-	    <artifactId>plain-credentials</artifactId>
-	    <version>1.2</version>
+    <dependency>
+      <groupId>org.jenkins-ci.plugins</groupId>
+      <artifactId>plain-credentials</artifactId>
+      <version>1.2</version>
 	</dependency>
   	<dependency>
 	  <groupId>org.apache.httpcomponents</groupId>
