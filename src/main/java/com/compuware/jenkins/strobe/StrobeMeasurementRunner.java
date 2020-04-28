@@ -122,10 +122,17 @@ public class StrobeMeasurementRunner
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
                 CloseableHttpResponse response = httpClient.execute(post))
         {
-        	String results = EntityUtils.toString(response.getEntity());        	
+        	String results = EntityUtils.toString(response.getEntity());
 			returnCode = getReturnCode(results);
-			listener.getLogger().println("Return Code=" + returnCode);
-			listener.getLogger().println("Session Request Number=" + getSessionRequestNumber(results));
+			if ((Integer.valueOf(returnCode)) < 0)
+			{
+				listener.getLogger().println("Invalid results: " + results);
+				return false;
+			}
+			else {
+				listener.getLogger().println("Return Code=" + returnCode);
+				listener.getLogger().println("Session Request Number=" + getSessionRequestNumber(results));
+			}
         }
         
 		return returnCode < 5; // got the <5 criteria from the processResponse function in StrobeService.java
@@ -134,7 +141,13 @@ public class StrobeMeasurementRunner
 	// instead of importing dependencies and other files to parse this json result into an object, we just process the string
 	private int getReturnCode(String results) {
 		String returnCodeString = "returnCode\":";
-		int returnCodeIndex = results.indexOf(returnCodeString);	
+		int returnCodeIndex = results.indexOf(returnCodeString);
+		
+		// the results don't have the return
+		if (returnCodeIndex == -1) {
+			return returnCodeIndex;
+		}
+		
 		int commaIndex = results.indexOf(",", returnCodeIndex);		
 		String returnCode = results.substring(returnCodeIndex + returnCodeString.length(), commaIndex);
 		return Integer.parseInt(returnCode);
