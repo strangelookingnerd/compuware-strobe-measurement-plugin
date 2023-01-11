@@ -444,11 +444,6 @@ public class StrobeMeasurementBuilder extends Builder implements SimpleBuildStep
 		public ListBoxModel doFillConnectionIdItems(@AncestorInPath Jenkins context, @QueryParameter String connectionId,
 				@AncestorInPath Item project)
 		{
-			if (project == null) {
-				Jenkins.get().checkPermission(Jenkins.ADMINISTER);
-			} else {
-				project.checkPermission(Item.CONFIGURE);
-			}
 			CpwrGlobalConfiguration globalConfig = CpwrGlobalConfiguration.get();
 			HostConnection[] hostConnections = globalConfig.getHostConnections();
 
@@ -474,11 +469,6 @@ public class StrobeMeasurementBuilder extends Builder implements SimpleBuildStep
 		public static ListBoxModel doFillCredentialsIdItems(@AncestorInPath Jenkins context, @QueryParameter String credentialsId,
 				@AncestorInPath Item project)
 		{
-			if (project == null) {
-				Jenkins.get().checkPermission(Jenkins.ADMINISTER);
-			} else {
-				project.checkPermission(Item.CONFIGURE);
-			}
 			List<StringCredentials> creds = CredentialsProvider.lookupCredentials(
 					StringCredentials.class, project, ACL.SYSTEM,
 					Collections.<DomainRequirement> emptyList());
