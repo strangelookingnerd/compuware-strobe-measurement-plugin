@@ -11,7 +11,7 @@
   </parent>
   
   <groupId>com.compuware.jenkins</groupId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.2</version>
   <artifactId>compuware-strobe-measurement</artifactId>
   <packaging>hpi</packaging>
 
@@ -44,7 +44,7 @@
     <connection>scm:git:ssh://github.com/jenkinsci/compuware-strobe-measurement-plugin.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/jenkinsci/compuware-strobe-measurement-plugin.git</developerConnection>
     <url>https://github.com/jenkinsci/compuware-strobe-measurement-plugin</url>
-    <tag>HEAD</tag>
+    <tag>compuware-strobe-measurement-1.0.2</tag>
   </scm>
 
   <repositories>
