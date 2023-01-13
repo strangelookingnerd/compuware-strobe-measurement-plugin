@@ -34,15 +34,15 @@
 
   <developers>
     <developer>
-      <id>VinceCapodanno</id>
-      <name>Vince Capodanno</name>
-      <email>vince.capodanno@compuware.com</email>
+      <id>pramodc0777</id>
+      <name>Pramod Chaudhari</name>
+      <email>pramod_chaudhari2@bmc.com</email>
     </developer>
   </developers>
   
   <scm>
-    <connection>scm:git:ssh://github.com/jenkinsci/compuware-strobe-measurement-plugin.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/jenkinsci/compuware-strobe-measurement-plugin.git</developerConnection>
+    <connection>scm:git:https://github.com/jenkinsci/compuware-strobe-measurement-plugin.git</connection>
+    <developerConnection>scm:git:https://github.com/jenkinsci/compuware-strobe-measurement-plugin.git</developerConnection>
     <url>https://github.com/jenkinsci/compuware-strobe-measurement-plugin</url>
     <tag>HEAD</tag>
   </scm>
