@@ -501,7 +501,7 @@ public class StrobeMeasurementBuilder extends Builder implements SimpleBuildStep
 			return model;
 		}
 
-		@GET
+		@POST
 		public FormValidation doCheckConnectionId(@QueryParameter final String value)
 		{
 			if (Util.fixEmptyAndTrim(value) == null)
