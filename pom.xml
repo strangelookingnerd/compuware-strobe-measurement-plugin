@@ -22,8 +22,8 @@
     <java.level>8</java.level>
   </properties>
   
-  <name>BMC AMI Strobe Measurement Plugin</name>
-  <description>Adds support for BMC AMI's Strobe Measurement Request API</description>
+  <name>BMC Strobe Measurement Task</name>
+  <description>Adds support for BMC Strobe Measurement Request API</description>
   <url>https://github.com/jenkinsci/compuware-strobe-measurement-plugin</url>
   <licenses>
     <license>
