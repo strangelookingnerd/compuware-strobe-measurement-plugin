@@ -1,4 +1,4 @@
-# <img src="images/bmc_brandmark.png" width="45" height="45">BMC Strobe Measurement Task
+# <img src="images/bmc_brandmark.png" width="45" height="45">BMC AMI Strobe Measurement Task
 
 ## Overview
 
@@ -26,7 +26,7 @@ The following are required to use this plugin:
 
 ## Installing in a Jenkins Instance
 
-Install the BMC Strobe Measurement Task according to the
+Install the BMC AMI Strobe Measurement Task according to the
 Jenkins instructions for installing plugins. Dependent plugins will
 automatically be installed. (You will still need to separately install 
 Common Enterprise Services)
@@ -54,7 +54,7 @@ Common Enterprise Services)
 
 ### Executing a Measurement
 
-1.  On the project Configuration page, in the Build section click Add build step button and select BMC Strobe Measurement Task.
+1.  On the project Configuration page, in the Build section click Add build step button and select BMC AMI Strobe Measurement Task.
 
 2.  Here select your host connection and token you previously defined above. You can configure both from this screen too.
 
