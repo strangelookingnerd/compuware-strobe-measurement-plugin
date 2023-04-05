@@ -2,10 +2,10 @@
 
 ## Overview
 
-Strobe, the leading mainframe application performance management solution,
+BMC AMI Strobe (Strobe), the leading mainframe application performance management solution,
 is traditionally used by Operations teams to pinpoint and resolve application
 performance problems found in production. The shift left approach for testing allows
-development teams to perform tests earlier in the cycle. The plugin allows Jenkins users 
+development teams to conduct tests earlier in the cycle. The plugin allows Jenkins users 
 to setup automated Strobe measurements and get custom callback notifications when complete.
 
 ## Prerequisites
@@ -13,52 +13,54 @@ to setup automated Strobe measurements and get custom callback notifications whe
 The following are required to use this plugin:
 
 -   Jenkins
--   Jenkins Credentials Plugin
--   Strobe license
+-   Jenkins Credentials plugin
+-   BMC AMI Strobe (Strobe) license
 -   BMC AMI Common Configuration plugin
--   An installation of BMC AMI Common Enterprise Services with Strobe installed.
+-   An installation of BMC AMI Common Enterprise Services (CES) with Strobe installed.
 
-	**Note**: CES must be version 20.02.x or greater to use the notification callback.
-			  This version will also utilize the INITBY of CI (Continuous Integration) identifier,
-			  which will allow zAdviser to track this activity.
-			  This plugin can still submit measurements using previous CES versions. 
+	**Note**: You need CES version 20.02.*xx* or later to use the notification callback.
+			  This version will also utilize the INITBY of the CI (Continuous Integration) identifier,
+			  which will allow BMC AMI DevX Adviser to track this activity.
+			  This plugin can still submit measurements using earlier CES versions. 
 			  Strobe 18.02 PTF SBG422A is required for the INITBY of CI.
 
-## Installing in a Jenkins Instance
+## Installing in a Jenkins instance
 
-Install the BMC AMI Strobe Measurement Task according to the
+Install the BMC AMI Strobe Measurement Task as per
 Jenkins instructions for installing plugins. Dependent plugins will
-automatically be installed. (You will still need to separately install 
-Common Enterprise Services)
+automatically be installed. You will need to separately install 
+BMC AMI Common Enterprise Services (CES).
     
 ### Configuration
 
-1.  In Common Enterprise Services, do the following:
+1.  In CES, perform the following steps:
 
-	a. 	Navigate to the Host Connections page and define your host connection that's connected to your Strobe installation.
+	a. 	Navigate to the Host Connections page and define the host connection that is connected to your Strobe installation.
 
-	b.	Navigate to the Security page and define a Personal Access Token for the above host connection.
+	b.	Navigate to the Security page and define a Personal Access Token for this host connection.
     	
     **Note**: Sometimes Strobe on the mainframe can have difficulty determining
-    		  the correct host of CES, so you may need to set the "ces.host.address" 
-    		  property in ces.properties located at data/ces/config in the CES installation directory.
-    		  e.g. ces.host.address=127.0.0.1 or ces.host.address=localhost
+    		  the correct CES host. So you might need to set the **ces.host.address** 
+    		  property in **ces.properties** located at **data/ces/config** in the CES installation directory.
+    		  For example, ces.host.address=127.0.0.1 or ces.host.address=localhost
 
-2.  In the Jenkins system Jenkins/Manage Jenkins/Configure System screen, go to the Common Configurations section.In the Host Connections section, add the same host connection defined in Common Enterprise Services.
+2.  Go to Jenkins system > Jenkins > Manage Jenkins > Configure System > Common Configurations > Host Connections section. In the Host Connections section, add the same host connection as defined in CES, while ensuring the following:
 
-		-	Make sure the description field matches the description in CES.
+		-	Make sure that description field matches the description in CES.
 		-	Add the CES URL in the format scheme://host:port    e.g. https://myHost:48226
 
-3.  In the Jenkins system, you should define the personal access token from step 1 as secret text in Credentials. 
-	Refer to the Jenkins documentation for the Credentials Plugin.
+3.  In the Jenkins system, define the Personal Access Token from step 1 as secret text in the Credentials plugin. 
+	For more information, see the [Jenkins documentation for Credentials Plugin](https://plugins.jenkins.io/credentials/)
 
 ### Executing a Measurement
 
-1.  On the project Configuration page, in the Build section click Add build step button and select BMC AMI Strobe Measurement Task.
+Perform the following steps:
 
-2.  Here select your host connection and token you previously defined above. You can configure both from this screen too.
+1.  In your Jenkins Project, go to the project Configuration page > Build Steps section, click **Add build step** and select **BMC AMI Strobe Measurement Task**.
 
-3.  Fill out the rest of the form as desired. See the help on the right of each individual field if you have any questions.
+2.  In BMC AMI Strobe Measurement Task section, select your host connection and the personal access token that you previously defined. You can also configure both from this screen.
+
+3.  Fill out the rest of the form as desired. Refer to the help next to each field if you have any questions.
 
 4.  Click **Save**.
 
@@ -66,28 +68,28 @@ Your project is now configured to start a measurement on the configured job.
 
 ## Product Assistance
 
-BMC provides assistance to customers with its documentation, the BMC Support website, and via telephonic conversations with the Customer Support team.
+BMC provides assistance to customers with its documentation, the BMC Support website, and via telephone calls with the Customer Support team.
 
-### BMC Support Center
+### BMC Support Central
 
-You can access information for BMC products via our Support site, [https://support.bmc.com](https://support.bmc.com/). Support Central provides access to critical information about your BMC products. You can review frequently asked questions, read or download documentation, access product fixes, or e-mail your questions or comments. The first time you access Support Central, you must register and obtain a password. The registration is free.
+You can access information about BMC products via our Support site, [https://support.bmc.com](https://support.bmc.com/). Support Central provides access to critical information about your BMC products. You can review frequently asked questions, read or download documentation, access product fixes, or e-mail your questions or comments. The first time you access Support Central, you must register and obtain a password. The registration is free.
 
 ### Contacting Customer Support
 
-At BMC, we strive to make our products and documentation the best in the industry. Feedback from our customers helps us maintain our quality standards. If you need support services, please obtain the following information before calling BMC's 24-hour telephone support:
+At BMC, we strive to make our products and documentation the best in the industry. Feedback from our customers helps us maintain our quality standards. If you need support services, please obtain the following information before calling BMC/'s 24-hour telephone support:
 
 - The Jenkins pipeline job output that contains any error messages or pertinent information.
 
-- The name, release number, and build number of your product. This information is displayed in the installed extensions page. Apply the filter, BMC, to display all of the installed BMC extension.
+- The name, release number, and build number of your product. This information is displayed in the installed extensions page. Apply the filter, BMC, to display all the installed BMC extensions.
 
-- Environment information, such as the operating system and release on which the Workbench for Eclipse CLI is installed.
+- Environment information, such as the operating system and release on which the BMC AMI DevX Workbench for Eclipse CLI is installed.
 
 You can contact BMC in one of the following ways:
 
 
-#### Web
+### Web
 
-You can report issues via the BMC Support site: [https://support.bmc.com](https://support.bmc.com/).
+You can report issues via the BMC Support website: [https://support.bmc.com](https://support.bmc.com/).
 
 Note: Please report all high-priority issues by phone.
 
