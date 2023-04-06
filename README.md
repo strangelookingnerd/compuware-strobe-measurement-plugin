@@ -26,7 +26,7 @@ The following are required to use this plugin:
 
 ## Installing in a Jenkins instance
 
-Install the BMC AMI Strobe Measurement Task as per
+Install the BMC AMI Strobe Measurement Task plugin as per
 Jenkins instructions for installing plugins. Dependent plugins will
 automatically be installed. You will need to separately install 
 BMC AMI Common Enterprise Services (CES).
@@ -39,26 +39,26 @@ BMC AMI Common Enterprise Services (CES).
 
 	b.	Navigate to the Security page and define a Personal Access Token for this host connection.
     	
-    **Note**: Sometimes Strobe on the mainframe can have difficulty determining
+    **Note**: Strobe on the mainframe can have difficulty determining
     		  the correct CES host. So you might need to set the **ces.host.address** 
-    		  property in **ces.properties** located at **data/ces/config** in the CES installation directory.
+    		  property to the CES host location in **ces.properties** located at **data/ces/config** in the CES installation directory.
     		  For example, ces.host.address=127.0.0.1 or ces.host.address=localhost
 
-2.  Go to Jenkins system > Jenkins > Manage Jenkins > Configure System > Common Configurations > Host Connections section. In the Host Connections section, add the same host connection as defined in CES, while ensuring the following:
+2.  Go to Jenkins system > Jenkins > Manage Jenkins > Configure System > Common Configurations > Host Connections section. In the **Host Connections** section, add the same host connection as defined in CES, while ensuring the following:
 
 		-	Make sure that description field matches the description in CES.
 		-	Add the CES URL in the format scheme://host:port    e.g. https://myHost:48226
 
 3.  In the Jenkins system, define the Personal Access Token from step 1 as secret text in the Credentials plugin. 
-	For more information, see the [Jenkins documentation for Credentials Plugin](https://plugins.jenkins.io/credentials/)
+	For more information, see the [Jenkins documentation for Credentials Plugin](https://plugins.jenkins.io/credentials/).
 
 ### Executing a Measurement
 
 Perform the following steps:
 
-1.  In your Jenkins Project, go to the project Configuration page > Build Steps section, click **Add build step** and select **BMC AMI Strobe Measurement Task**.
+1.  In your Jenkins Project, go to the Configure > Build Steps section, click **Add build step** and select **BMC AMI Strobe Measurement Task**.
 
-2.  In BMC AMI Strobe Measurement Task section, select your host connection and the personal access token that you previously defined. You can also configure both from this screen.
+2.  In BMC AMI Strobe Measurement Task pane, select your host connection and the personal access token that you previously defined. You can also configure both from this screen.
 
 3.  Fill out the rest of the form as desired. Refer to the help next to each field if you have any questions.
 
@@ -83,8 +83,6 @@ At BMC, we strive to make our products and documentation the best in the industr
 - The name, release number, and build number of your product. This information is displayed in the installed extensions page. Apply the filter, BMC, to display all the installed BMC extensions.
 
 - Environment information, such as the operating system and release on which the BMC AMI DevX Workbench for Eclipse CLI is installed.
-
-You can contact BMC in one of the following ways:
 
 
 ### Web
