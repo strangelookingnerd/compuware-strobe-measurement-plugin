@@ -23,7 +23,7 @@
   </properties>
   
   <name>BMC AMI Strobe Measurement Task</name>
-  <description>Adds support for BMC Strobe Measurement Request API</description>
+  <description>Adds support for BMC AMI Strobe Measurement Request API</description>
   <url>https://github.com/jenkinsci/compuware-strobe-measurement-plugin</url>
   <licenses>
     <license>
